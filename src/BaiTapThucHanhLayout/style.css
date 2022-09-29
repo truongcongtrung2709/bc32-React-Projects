@@ -1,0 +1,46 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.navbar-collapse{
+    margin-left: 600px;
+}
+.banner{
+    padding: 100px;
+    margin: 20px 0;
+    text-align: center;
+}
+.banner .banner-title{
+    font-size: 50px;
+    font-weight: bold;
+}
+.banner .banner-text{
+    font-size: 26px;
+}
+.itemList{
+    padding: 50px 0;
+}
+.itemList .card {
+    text-align: center;
+}
+.itemList .card h5{
+    font-size: 1.5rem;
+    font-weight: bold;
+    position: relative;
+}
+.itemList .card .icon{
+    height: 4rem;
+    width: 4rem;
+    line-height: 4.5rem;
+    border-radius: 5px;
+    position: absolute;
+    top:-30px;
+    left: 225px;
+}
+.itemList .card .icon i{
+    font-size: 2rem;
+    color: white;
+}
