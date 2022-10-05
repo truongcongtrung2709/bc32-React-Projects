@@ -1,8 +1,9 @@
-import BaiTapThucHanhLayout from "./BaiTapThucHanhLayout/BaiTapThucHanhLayout";
+// import BaiTapThucHanhLayout from "./BaiTapThucHanhLayout/BaiTapThucHanhLayout";
+import GlassesIndex from "./TryGlassesOnline/GlassesIndex";
 function App() {
   return (
-    <BaiTapThucHanhLayout/>
-
+    // <BaiTapThucHanhLayout/>
+    <GlassesIndex/>
   );
 }
 export default App;

@@ -1,0 +1,30 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.header{
+    background: rgba(0,0,0,0.5)
+}
+.detail-img{
+    position: relative;
+}
+.detail-img .img-glass{
+    position: absolute;
+    top: 80px;
+    left: 50px;
+}
+.detail-img .detail{
+    position: absolute;
+    bottom: 0;
+    background: rgba(177, 122, 19, 0.5);
+    
+}
+.try-on{
+    position: relative;
+}
+.try-on .img-try-glass{
+    position: absolute;
+    top: 80px;
+    left: 50px;
+}
