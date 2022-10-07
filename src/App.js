@@ -1,7 +1,10 @@
-import BaiTapThucHanhLayout from "./BaiTapThucHanhLayout/BaiTapThucHanhLayout";
+import ShoeStore from "./ShoesStore/ShoesStore";
+
+// import BaiTapThucHanhLayout from "./BaiTapThucHanhLayout/BaiTapThucHanhLayout";
 function App() {
   return (
-    <BaiTapThucHanhLayout/>
+    // <BaiTapThucHanhLayout/>
+    <ShoeStore/>
 
   );
 }
