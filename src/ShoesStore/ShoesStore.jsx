@@ -55,13 +55,13 @@ export default class ShoeStore extends Component {
   render() {
     return (
       <div>
-      <div className="header ">
+      <div className="header">
         <h1 className='text-center'>Shoes Shop</h1>     
         
       </div>
       <button onClick={this.handleToggleModal} className='btn btn-primary'>
-          <span></span>
           <i className="fa-solid fa-cart-shopping"></i>
+          <span className=' mx-2 text-white'>{this.state.carts.reduce((total, item)=>total+(item.quantity),0)}</span>
         </button>
         
       <div className='container'>
