@@ -51,6 +51,7 @@ export default class ShoeStore extends Component {
     }
 
   }
+
   render() {
     return (
       <div>
@@ -59,8 +60,10 @@ export default class ShoeStore extends Component {
         
       </div>
       <button onClick={this.handleToggleModal} className='btn btn-primary'>
+          <span></span>
           <i className="fa-solid fa-cart-shopping"></i>
         </button>
+        
       <div className='container'>
       <ProductList products={data} onAddToCart={this.handleAddToCart}/>
       <ProductCart isOpen={this.state.isOpen}

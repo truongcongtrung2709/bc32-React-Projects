@@ -47,10 +47,10 @@ const ProductCart = ({carts, isOpen, onClose, onChangeQuantity}) => {
                                 <img src={item.image} alt={item.name} width="50px" height="50px" />
                             </td>
                             <td>{item.price}</td>
-                            <td>
-                                <button className='btn btn-danger' onClick={() => onChangeQuantity(item.id, -1)} >-</button>
+                            <td className='row'>
+                                <button className='rounded btn-danger h6 'style={{padding:"0 4px"}}  onClick={() => onChangeQuantity(item.id, -1)} >-</button>
                                 <span className='mx-2'>{item.quantity}</span>
-                                <button className='btn btn-success' onClick={() => onChangeQuantity(item.id, 1)}>+</button>
+                                <button className='rounded btn-success h6' style={{padding:"0 2px"}} onClick={() => onChangeQuantity(item.id, 1)}>+</button>
                             </td>
                             <td>{item.quantity * item.price}</td>
                         </tr>
@@ -59,6 +59,9 @@ const ProductCart = ({carts, isOpen, onClose, onChangeQuantity}) => {
                 </table>
               </div>
               <div className="modal-footer">
+               
+               <span>Total Price: {carts.reduce((total, item)=>total+(item.price*item.quantity),0)} $</span>
+                                              
                 <button
                   type="button"
                   className="btn btn-secondary"
