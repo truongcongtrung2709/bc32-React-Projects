@@ -1,5 +1,5 @@
 import BaiTapThucHanhLayout from "./BaiTapThucHanhLayout/BaiTapThucHanhLayout";
-import MovieSeatSelection from "./MovieSeatSelection/MovieSeatSelection";
+import MovieSeatSelection from "./MovieSeatSelection/Components/MovieSeatSelection";
 function App() {
   return (
     // <BaiTapThucHanhLayout/>

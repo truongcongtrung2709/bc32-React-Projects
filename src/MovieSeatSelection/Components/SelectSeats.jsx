@@ -1,6 +1,8 @@
 import React from 'react'
 import Button from 'react-bootstrap/Button';
 const SelectSeats = () => {
+
+    
   return (
     <div className='select-content'>
         <ul className="note-seats my-3 row">
