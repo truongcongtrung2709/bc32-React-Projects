@@ -1,7 +1,11 @@
 import React from 'react'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
+import {useSelector} from 'react-redux'
+
 const OrderSeats = () => {
+  const {name, numSeats} = useSelector((state)=> state.booktickets)
+
   return (
     <div className='order-seats'>
       <h6 style={{color:"#ff9800"}}
@@ -24,7 +28,7 @@ const OrderSeats = () => {
         <Form.Control type="number" />
       </Form.Group>
     </Form>
-    <Button variant="btn bg-white my-3" type="submit">
+    <Button variant="btn bg-white my-3" type="submit" >
         Start Selecting
       </Button>
     </div>
