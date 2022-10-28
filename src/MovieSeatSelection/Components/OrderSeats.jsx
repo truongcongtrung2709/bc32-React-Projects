@@ -1,11 +1,23 @@
 import React from 'react'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
-import {useSelector} from 'react-redux'
-
+import { useDispatch } from 'react-redux'
+import { bookTickets } from '../../actions/ticketActions'
+import {useRef} from "react"
 const OrderSeats = () => {
-  const {name, numSeats} = useSelector((state)=> state.booktickets)
+  const dispatch = useDispatch();
 
+  const inputName = useRef();
+  const inputNumSeats = useRef();
+
+
+
+
+  const handleBookTickets = () => {
+    const nameValue = inputName.current.value;
+    const numSeatsValue = inputNumSeats.current.value;
+    dispatch({type: bookTickets(),name: nameValue, numSeats: numSeatsValue});
+  }
   return (
     <div className='order-seats'>
       <h6 style={{color:"#ff9800"}}
@@ -17,7 +29,7 @@ const OrderSeats = () => {
         <span style={{color:"red"}}> *</span>
         </Form.Label>
         
-        <Form.Control type="text" />
+        <Form.Control type="text" ref={inputName}/>
       </Form.Group>
 
       <Form.Group>
@@ -25,10 +37,10 @@ const OrderSeats = () => {
           Number of Seats 
           <span style={{color:"red"}}> *</span>
           </Form.Label>
-        <Form.Control type="number" />
+        <Form.Control type="number" ref={inputNumSeats} />
       </Form.Group>
     </Form>
-    <Button variant="btn bg-white my-3" type="submit" >
+    <Button variant="btn bg-white my-3" type="submit" onClick={handleBookTickets} >
         Start Selecting
       </Button>
     </div>

@@ -1,7 +1,7 @@
 import { BOOK_TICKETS } from "../constants/ticketConstants";
 import data from "../MovieSeatSelection/data/danhSachGhe.json";
 
-const initialState = { data, customer: [{ name: "", numSeats: 0 }] };
+const initialState = { ...data,name: "",numSeats: 0};
 
 const ticketReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -10,8 +10,8 @@ const ticketReducer = (state = initialState, action) => {
       if (name === "" || numSeats === 0) {
         return state;
       }
-      const inputName = state.name;
-      const inputNumSeats = state.numSeats;
+      const inputName = action.data.name;
+      const inputNumSeats = action.data.numSeats + numSeats;
 
       return { ...state, inputName, inputNumSeats };
     }
