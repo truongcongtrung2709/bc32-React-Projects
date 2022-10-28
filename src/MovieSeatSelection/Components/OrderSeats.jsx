@@ -11,12 +11,10 @@ const OrderSeats = () => {
   const inputNumSeats = useRef();
 
 
-
-
   const handleBookTickets = () => {
     const nameValue = inputName.current.value;
     const numSeatsValue = inputNumSeats.current.value;
-    dispatch({type: bookTickets(),name: nameValue, numSeats: numSeatsValue});
+    dispatch(bookTickets(nameValue,numSeatsValue));
   }
   return (
     <div className='order-seats'>
