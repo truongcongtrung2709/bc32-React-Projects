@@ -1,5 +1,4 @@
 import React from 'react'
-import data from '../data/danhSachGhe.json'
 import '../styles/BaiTapBookingTicket.css'
 import OrderSeats from '../Components/OrderSeats'
 import SelectSeats from '../Components/SelectSeats'
@@ -9,10 +8,10 @@ const MovieSeatSelection= () =>{
       <div className='body'>
         <h1 className='text-center py-4 text-white '>MOVIE SEAT SELECTION</h1>
         <div className='row justify-content-center'>
-        <div className='seats-form px-5 py-5'  style={{background: "rgba(0, 0, 0, 0.5)"}}
+        <div className='seats-form py-5'  style={{background: "rgba(0, 0, 0, 0.5)"}}
         >
        <OrderSeats /> 
-       <SelectSeats cinema ={data}/>
+       <SelectSeats />
        <Total/>
        </div>
         </div>

@@ -17,11 +17,11 @@ const OrderSeats = () => {
     dispatch(bookTickets(nameValue,numSeatsValue));
   }
   return (
-    <div className='order-seats'>
+    <div className='order-seats text-center'>
       <h6 style={{color:"#ff9800"}}
       className="mb-4"
       >Fill The Required Details Below And Select Your Seats</h6>
-      <Form className="row">
+      <Form className="row justify-content-center">
       <Form.Group className="mr-3">
         <Form.Label className='text-white'>Name
         <span style={{color:"red"}}> *</span>

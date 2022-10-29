@@ -1,40 +1,50 @@
-import React from 'react'
-import Button from 'react-bootstrap/Button';
-
-const SelectSeats = ({cinema}) => {
+import React from "react";
+import Button from "react-bootstrap/Button";
+import { useSelector } from "react-redux";
+const SelectSeats = () => {
+  const {cinema} = useSelector((state) => state.cinema);
   return (
-    <div className='select-content'>
-        <ul className="note-seats my-3 row">
-            <li className='smallBox greenBox'>
-                Selected Seat
-            </li>
-            <li className='smallBox redBox'>
-            Reserved Seat
-            </li>
-            <li className='smallBox whiteBox'>
-            Empty Seat
-            </li>
-        </ul>
-        <div className='notification my-5'>
-            <p>Please Select your Seats NOW!</p>
-            </div>
-       
-            {cinema.map((row)=>(
-                <div className='row'>{row.hang}
-                {row.danhSachGhe.map((seat)=>(
-                    <div className="ghe">{seat.soGhe}</div>
-                ))}
-                </div>
-            ))}
-        
-        <div className="screen-center text-center my-5">
-            <h3 className='text-black'>Screen This Way</h3>
-        </div>
-        <div className='text-center'>
-        <Button className='bg-white text-dark my-4'>Confirm Selection</Button>
-        </div>
+    <div className="select-content">
+      <ul className="note-seats">
+        <li className="smallBox greenBox">Selected Seat</li>
+        <li className="smallBox redBox">Reserved Seat</li>
+        <li className="smallBox whiteBox">Empty Seat</li>
+      </ul>
+      <div className="notification my-5">
+        <p>Please Select your Seats NOW!</p>
+      </div>
+      <div className="containerCinema">
+        {cinema.map((row, rowIndex) => (
+          <div className={`row text-center ${rowIndex === 5 ? "mb-5" : ""}`}>
+            <div key={row.hang} className="rowNumber">{row.hang}</div>
+            {row.danhSachGhe.map((seat, seatIndex) => {
+              if (rowIndex === 0) {
+                return (
+                  <div key={seat.soGhe} className={`rowNumber ${seatIndex === 4 ? "mr-5" : ""}`}>
+                    {seat.soGhe}
+                  </div>
+                );
+              }
+              return (
+                <div
+                  className={`ghe ${seatIndex === 4 ? "mr-5" : ""}`}
+                  onClick={() => {
+                    console.log(seat);
+                  }}
+                ></div>
+              );
+            })}
+          </div>
+        ))}
+      </div>
+      <div className="screen-center text-center ">
+        <h3 className="text-black">Screen This Way</h3>
+      </div>
+      <div className="text-center">
+        <Button className="bg-white text-dark">Confirm Selection</Button>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default SelectSeats
+export default SelectSeats;

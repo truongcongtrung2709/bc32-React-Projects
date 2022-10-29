@@ -1,8 +1,10 @@
 import { combineReducers, createStore } from "redux";
 import ticketReducer from "./Reducer/ticketReducer";
-
+import cinemaReducer from "./Reducer/cinemaReducer";
 const reducer = combineReducers({
   booktickets: ticketReducer,
+  cinema: cinemaReducer
+
 });
 
 const store = createStore(
