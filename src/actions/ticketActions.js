@@ -1,7 +1,7 @@
-import { BOOK_TICKETS } from "../constants/ticketConstants";
-export const bookTickets = (name, numSeats) => {
+import { ADD_TICKETS } from "../constants/ticketConstants";
+export const addTickets = (name, numSeats, bookedSeats) => {
   return {
-    type: BOOK_TICKETS,
-    payload: { name, numSeats },
+    type: ADD_TICKETS,
+    payload: { name, numSeats, bookedSeats },
   };
 };

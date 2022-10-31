@@ -8,6 +8,7 @@ body {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  background-attachment: fixed;
 }
 ul {
   list-style: none;
@@ -118,4 +119,8 @@ td {
   border-radius: 5px;
   width: 45px;
   height: 35px;
+}
+.screen-center{
+  background: orange;
+
 }

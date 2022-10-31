@@ -2,19 +2,25 @@ import React from 'react'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import { useDispatch } from 'react-redux'
-import { bookTickets } from '../../actions/ticketActions'
-import {useRef} from "react"
+import { addTickets } from '../../actions/ticketActions'
+import {useRef, useState} from "react"
+import { useSelector } from "react-redux";
 const OrderSeats = () => {
+  const bookTickets = useSelector((state) => state.bookTickets);
+  console.log(bookTickets);
+
   const dispatch = useDispatch();
 
   const inputName = useRef();
   const inputNumSeats = useRef();
 
+  
 
   const handleBookTickets = () => {
-    const nameValue = inputName.current.value;
-    const numSeatsValue = inputNumSeats.current.value;
-    dispatch(bookTickets(nameValue,numSeatsValue));
+    const name = inputName.current.value;
+    const numSeats = inputNumSeats.current.value;
+    bookTickets.push(name,numSeats);
+    dispatch(addTickets(bookTickets));
   }
   return (
     <div className='order-seats text-center'>

@@ -1,1 +1,1 @@
-export const BOOK_TICKETS = "book_tickets";
+export const ADD_TICKETS = "add_tickets";

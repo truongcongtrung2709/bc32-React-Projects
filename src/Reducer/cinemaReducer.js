@@ -1,15 +1,12 @@
 import cinema from "../MovieSeatSelection/data/danhSachGhe.json";
 
-const initialState = {cinema};
+const initialState = { cinema };
 
 const cinemaReducer = (state = initialState, action) => {
-
-switch (action.type) {
-        
+  switch (action.type) {
     default:
-        return state;
-}
-
-}
+      return state;
+  }
+};
 
 export default cinemaReducer;
