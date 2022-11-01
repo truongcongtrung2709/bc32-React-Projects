@@ -1,9 +1,8 @@
-import React from "react";
+import React, {useState} from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { useDispatch } from "react-redux";
 import { addTickets } from "../../actions/ticketActions";
-import { useState } from "react";
 import SelectSeats from "./SelectSeats";
 const OrderSeats = () => {
   const dispatch = useDispatch();
@@ -17,9 +16,6 @@ const OrderSeats = () => {
   });
   
 
-  const handleNotify = () =>{
-    setIsShow(current => !current)
-  }
 
   const handleChangeForm = (key, value) => {
     setTicket({
@@ -29,13 +25,15 @@ const OrderSeats = () => {
   };
 
     const handleBookTickets = () => {
-    setIsDisabled(!isDisabled);
+    
     if(ticket.name ==="" || ticket.numSeats === 0)
     {
       alert("Hãy điền đầy đủ thông tin");
       return;
-    }
-
+    }else{
+    setIsDisabled(!isDisabled);
+    setIsShow(current => !current)
+  }
      dispatch(addTickets(ticket.name, ticket.numSeats, ticket.bookedSeats));
   };
   return (
@@ -80,15 +78,17 @@ const OrderSeats = () => {
       <Button
         variant="btn bg-white my-3"
         type="submit"
-        onClick={()=>{handleBookTickets(); handleNotify(isShow && (
-          <div className="notification my-2">
-            <p>Please Select your Seats NOW!</p>
-          </div>
-        ))}}
+        onClick={()=>{handleBookTickets()}}
         disabled={isDisabled}
       >
         Start Selecting
       </Button>
+      <div className="notification my-3"
+      style={{
+        display: isShow ? 'block' : 'none'
+      }}>
+        <p>Please Select your Seats NOW!</p>
+      </div>
     </div>
   );
 };
