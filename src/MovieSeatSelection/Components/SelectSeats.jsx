@@ -3,8 +3,8 @@ import Button from "react-bootstrap/Button";
 import { useSelector } from "react-redux";
 const SelectSeats = () => {
   const {cinema} = useSelector((state) => state.cinema);
-  
- 
+  const bookTickets = useSelector((state) => state.bookTickets);
+  console.log(bookTickets);
   return (  
     <div className="select-content">
       <ul className="note-seats">

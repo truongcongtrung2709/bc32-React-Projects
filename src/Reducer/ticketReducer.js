@@ -1,5 +1,4 @@
 import { ADD_TICKETS } from "../constants/ticketConstants";
-
 const initialState = [];
 
 const ticketReducer = (state = initialState, action) => {
