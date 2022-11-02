@@ -1,5 +1,6 @@
 import React from 'react'
 import Table from 'react-bootstrap/Table'
+
 const Total = () => {
   return (
     <div className='displayTotal my-5'>
@@ -12,7 +13,7 @@ const Total = () => {
         </tr>
       </thead>
       <tbody>
-       
+
         
       </tbody>
     </Table>

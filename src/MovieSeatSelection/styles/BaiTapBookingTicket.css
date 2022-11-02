@@ -101,24 +101,26 @@ td {
 
 .gheDuocChon {
   border: 3px solid orange;
-
-  background: orange;
-  color: #000;
-
-  cursor: no-drop !important;
+  width: 25px;
+  height: 20px;
+  font-size: 12px;
+  margin-left: 2%;
+  margin-bottom: 1%;
   border-radius: 5px;
-  width: 45px;
-  height: 35px;
+  background-color: red;
+  cursor: pointer;
 }
 
 .gheDangChon {
-  background: rgb(109, 238, 109);
-  color: #000;
-
-  cursor: pointer;
+  border: 3px solid orange;
+  width: 25px;
+  height: 20px;
+  font-size: 12px;
+  margin-left: 2%;
+  margin-bottom: 1%;
   border-radius: 5px;
-  width: 45px;
-  height: 35px;
+  background-color: green;
+  cursor: pointer;
 }
 .screen-center{
   background: orange;
