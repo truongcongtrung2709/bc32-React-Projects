@@ -13,12 +13,7 @@ const SelectSeats = () => {
       <div className="containerCinema">
         <Seat/>
       </div>
-      <div className="screen-center text-center my-4 ">
-        <h3 className="text-black">Screen This Way</h3>
-      </div>
-      <div className="text-center">
-        <Button className="bg-white text-dark">Confirm Selection</Button>
-      </div>
+      
     </div>
   );
 };

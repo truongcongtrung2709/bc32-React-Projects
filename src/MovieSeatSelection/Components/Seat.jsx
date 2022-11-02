@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import { useSelector, useDispatch } from "react-redux";
+import Button from "react-bootstrap/Button";
 import { addTickets } from '../../actions/ticketActions';
 // import { updateSeats } from '../../actions/ticketActions';
 
@@ -14,7 +15,6 @@ const Seat = () => {
 
 
 const handleChooseSeats = (seat) => { 
-    const name = bookTickets[0].name;
     const numSeats = parseInt(bookTickets[0].numSeats,10)
     const bookedSeats = bookTickets[0].bookedSeats
     setCount(count+1);
@@ -25,6 +25,11 @@ const handleChooseSeats = (seat) => {
     {   
         setClickDisabled(!clickDisabled)
     }
+}
+
+const handleConfirm = () => {
+  console.log(parseInt(bookTickets[0].numSeats,10));
+  dispatch(addTickets(bookTickets[0].name, parseInt(bookTickets[0].numSeats,10),bookTickets[0].bookedSeats ))
 }
 
    
@@ -50,6 +55,14 @@ const handleChooseSeats = (seat) => {
             })}
           </div>
         ))}
+        <div className="screen-center text-center my-4 ">
+        <h3 className="text-black">Screen This Way</h3>
+      </div>
+      <div className="text-center">
+        <Button className="bg-white text-dark"
+        onClick={handleConfirm}
+        >Confirm Selection</Button>
+      </div>
     </>
   )
 }
