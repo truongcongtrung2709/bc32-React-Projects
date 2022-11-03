@@ -1,7 +1,14 @@
 import React from "react";
-import Button from "react-bootstrap/Button";
+import { Button } from "react-bootstrap";
 import Seat from "./Seat";
+import { useSelector } from "react-redux";
+
+
 const SelectSeats = () => {
+  const {cinema} = useSelector((state) => state.cinema);
+
+
+
   
   return (  
     <div className="select-content">
@@ -11,7 +18,7 @@ const SelectSeats = () => {
         <li className="smallBox whiteBox">Empty Seat</li>
       </ul>
       <div className="containerCinema">
-        <Seat/>
+        <Seat cinema={cinema}/>
       </div>
       
     </div>

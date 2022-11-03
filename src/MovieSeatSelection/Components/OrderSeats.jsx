@@ -25,14 +25,14 @@ const OrderSeats = () => {
   };
 
   const handleBookTickets = () => {
-    setIsDisabled(!isDisabled);
     if (ticket.name === "" || ticket.numSeats === 0) {
       alert("Hãy điền đầy đủ thông tin");
       return;
     }
     else{
+      setIsDisabled(!isDisabled);
       setIsShow(current => !current);
-      dispatch(addTickets(ticket.name, ticket.numSeats, ticket.bookedSeats));
+      dispatch(addTickets(ticket.name, ticket.numSeats,ticket.bookedSeats));
     }  
   };
   return (

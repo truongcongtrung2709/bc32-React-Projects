@@ -1,36 +1,37 @@
 import React, {useState} from 'react'
 import { useSelector, useDispatch } from "react-redux";
-import Button from "react-bootstrap/Button";
-import { addTickets } from '../../actions/ticketActions';
-// import { updateSeats } from '../../actions/ticketActions';
+import {Button} from "react-bootstrap"
+import { total } from '../../actions/ticketActions';
 
-
-const Seat = () => {
+const Seat = ({cinema}) => {
     const dispatch = useDispatch();
-    const {cinema} = useSelector((state) => state.cinema);
     const bookTickets = useSelector((state) => state.bookTickets);
-
     const [count, setCount] = useState(1)
     const [clickDisabled, setClickDisabled] = useState(false);
 
 
 const handleChooseSeats = (seat) => { 
-    const numSeats = parseInt(bookTickets[0].numSeats,10)
-    const bookedSeats = bookTickets[0].bookedSeats
+    const numSeats = parseInt(bookTickets.numSeats,10)
+    const bookedSeats = bookTickets.bookedSeats
     setCount(count+1);
     bookedSeats.push(seat);
     console.log(seat);
-    console.log(bookedSeats);
     if(numSeats === count || numSeats < count)
     {   
         setClickDisabled(!clickDisabled)
     }
+
+}
+const handleTotal = () => {
+  // console.log(bookTickets.bookedSeats);
+  const bookedSeats = bookTickets.bookedSeats;
+  const arrSoGhe = bookedSeats.map((item)=>item.soGhe)
+  const totalPrice = bookedSeats.reduce((total,item)=>total = total + item.gia,0);
+  const soGhe = arrSoGhe.join(',');
+  console.log(soGhe);
+  console.log(totalPrice);
 }
 
-const handleConfirm = () => {
-  console.log(parseInt(bookTickets[0].numSeats,10));
-  dispatch(addTickets(bookTickets[0].name, parseInt(bookTickets[0].numSeats,10),bookTickets[0].bookedSeats ))
-}
 
    
   return (
@@ -60,7 +61,7 @@ const handleConfirm = () => {
       </div>
       <div className="text-center">
         <Button className="bg-white text-dark"
-        onClick={handleConfirm}
+        onClick={handleTotal}
         >Confirm Selection</Button>
       </div>
     </>
