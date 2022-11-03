@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import { useSelector, useDispatch } from "react-redux";
 import {Button} from "react-bootstrap"
-import { total } from '../../actions/ticketActions';
+import { total, status } from '../../actions/ticketActions';
 
 const Seat = ({cinema}) => {
     const dispatch = useDispatch();
@@ -9,8 +9,7 @@ const Seat = ({cinema}) => {
     const [count, setCount] = useState(1)
     const [clickDisabled, setClickDisabled] = useState(false);
 
-
-const handleChooseSeats = (seat) => { 
+const handleChooseSeats = (seat) => {
     const numSeats = parseInt(bookTickets.numSeats,10)
     const bookedSeats = bookTickets.bookedSeats
     setCount(count+1);
@@ -20,16 +19,9 @@ const handleChooseSeats = (seat) => {
     {   
         setClickDisabled(!clickDisabled)
     }
-
 }
 const handleTotal = () => {
-  // console.log(bookTickets.bookedSeats);
-  const bookedSeats = bookTickets.bookedSeats;
-  const arrSoGhe = bookedSeats.map((item)=>item.soGhe)
-  const totalPrice = bookedSeats.reduce((total,item)=>total = total + item.gia,0);
-  const soGhe = arrSoGhe.join(',');
-  console.log(soGhe);
-  console.log(totalPrice);
+  dispatch(total());
 }
 
 
@@ -49,7 +41,9 @@ const handleTotal = () => {
               }
               return (
                 <div key={seat.soGhe}
-                  className={`ghe ${seatIndex === 4 ? "mr-5" : ""}`}
+                  className={`ghe ${seatIndex === 4 ? "mr-5" : ""} 
+                  
+                  `}
                   onClick={clickDisabled ? () =>{} : () => handleChooseSeats(seat)}
                 ></div>
               );
