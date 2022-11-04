@@ -19,9 +19,14 @@ const ticketReducer = (state = initialState, action) => {
       const name = state.name;
       const numSeats = state.numSeats;
       const bookedSeats = state.bookedSeats;
+      if (bookedSeats.length < numSeats) {
+        alert("Hãy nhập đủ số ghế");
+        return;
+      }
       const arrSoGhe = bookedSeats.map((item) => item.soGhe);
       const soGhe = arrSoGhe.join(",");
       const gia = bookedSeats.reduce((total, item) => total + item.gia, 0);
+      // console.log(name, numSeats, bookedSeats, soGhe, gia);
       return {
         ...state,
         name,

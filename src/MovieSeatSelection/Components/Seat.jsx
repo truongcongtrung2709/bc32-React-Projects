@@ -9,7 +9,7 @@ const Seat = ({cinema}) => {
     const bookTickets = useSelector((state) => state.bookTickets);
     const [count, setCount] = useState(1)
     const [clickDisabled, setClickDisabled] = useState(false);
-
+    const [isDisabled, setIsDisabled] = useState(false);
 const handleSelectSeats = (seat) => {
     // dispatch(seatSelect())
 
@@ -21,31 +21,37 @@ const handleSelectSeats = (seat) => {
     if(arrSoGhe.indexOf(seat.soGhe) === -1){
       bookedSeats.push(seat);
       setCount(count+1);
-      if(numSeats === count || numSeats < count)
+      if(numSeats === count || numSeats < count && !arrSoGhe.indexOf(seat.soGhe) === -1)
       {   
-          setClickDisabled(!clickDisabled)
+         bookedSeats.pop();
+         setCount(count-1);
       }
-    }   
-    else{
-      alert("Chỗ này mới đặt")
     }
+       
+    else{
+      bookedSeats.pop();
+      setCount(count-1);
+    }
+    console.log(count);
     console.log(seat);
     console.log(bookedSeats);
 
 }
 const handleTotal = () => {
   // console.log(bookTickets.bookedSeats);
-  const bookedSeats = bookTickets.bookedSeats;
-  if(bookedSeats.length < bookTickets.numSeats){
-    alert("Hãy nhập đủ số ghế")
-    return;
-  }
-  const arrSoGhe = bookedSeats.map((item)=>item.soGhe)
-  const totalPrice = bookedSeats.reduce((total,item)=>total = total + item.gia,0);
-  const soGhe = arrSoGhe.join(',');
-  console.log(soGhe);
-  console.log(totalPrice);
-  console.log(bookedSeats);
+  // const bookedSeats = bookTickets.bookedSeats;
+  // if(bookedSeats.length < bookTickets.numSeats){
+  //   alert("Hãy nhập đủ số ghế")
+  //   return;
+  // }
+  // const arrSoGhe = bookedSeats.map((item)=>item.soGhe)
+  // const totalPrice = bookedSeats.reduce((total,item)=>total = total + item.gia,0);
+  // const soGhe = arrSoGhe.join(',');
+  // console.log(soGhe);
+  // console.log(totalPrice);
+  // console.log(bookedSeats);
+  dispatch(total());
+  setIsDisabled(!isDisabled);
 }
 
 
@@ -78,6 +84,7 @@ const handleTotal = () => {
       <div className="text-center">
         <Button className="bg-white text-dark"
         onClick={handleTotal}
+        disabled={isDisabled}
         >Confirm Selection</Button>
       </div>
     </>
