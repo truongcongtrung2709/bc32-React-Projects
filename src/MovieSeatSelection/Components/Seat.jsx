@@ -1,7 +1,8 @@
 import React, {useState} from 'react'
 import { useSelector, useDispatch } from "react-redux";
 import {Button} from "react-bootstrap"
-import { total, status } from '../../actions/ticketActions';
+import { total } from '../../actions/ticketActions';
+import { seatSelect } from '../../actions/cinemaAction';
 
 const Seat = ({cinema}) => {
     const dispatch = useDispatch();
@@ -9,19 +10,42 @@ const Seat = ({cinema}) => {
     const [count, setCount] = useState(1)
     const [clickDisabled, setClickDisabled] = useState(false);
 
-const handleChooseSeats = (seat) => {
+const handleSelectSeats = (seat) => {
+    // dispatch(seatSelect())
+
     const numSeats = parseInt(bookTickets.numSeats,10)
     const bookedSeats = bookTickets.bookedSeats
-    setCount(count+1);
-    bookedSeats.push(seat);
-    console.log(seat);
-    if(numSeats === count || numSeats < count)
-    {   
-        setClickDisabled(!clickDisabled)
+
+    const arrSoGhe = bookedSeats.map((item)=> item.soGhe)
+   
+    if(arrSoGhe.indexOf(seat.soGhe) === -1){
+      bookedSeats.push(seat);
+      setCount(count+1);
+      if(numSeats === count || numSeats < count)
+      {   
+          setClickDisabled(!clickDisabled)
+      }
+    }   
+    else{
+      alert("Chỗ này mới đặt")
     }
+    console.log(seat);
+    console.log(bookedSeats);
+
 }
 const handleTotal = () => {
-  dispatch(total());
+  // console.log(bookTickets.bookedSeats);
+  const bookedSeats = bookTickets.bookedSeats;
+  if(bookedSeats.length < bookTickets.numSeats){
+    alert("Hãy nhập đủ số ghế")
+    return;
+  }
+  const arrSoGhe = bookedSeats.map((item)=>item.soGhe)
+  const totalPrice = bookedSeats.reduce((total,item)=>total = total + item.gia,0);
+  const soGhe = arrSoGhe.join(',');
+  console.log(soGhe);
+  console.log(totalPrice);
+  console.log(bookedSeats);
 }
 
 
@@ -41,10 +65,8 @@ const handleTotal = () => {
               }
               return (
                 <div key={seat.soGhe}
-                  className={`ghe ${seatIndex === 4 ? "mr-5" : ""} 
-                  
-                  `}
-                  onClick={clickDisabled ? () =>{} : () => handleChooseSeats(seat)}
+                  className={`ghe ${seatIndex === 4 ? "mr-5" : ""}`}
+                  onClick={clickDisabled ? () =>{} : () => handleSelectSeats(seat)}
                 ></div>
               );
             })}
