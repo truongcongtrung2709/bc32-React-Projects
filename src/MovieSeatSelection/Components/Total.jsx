@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 const Total = () => {
 
   const bookTickets = useSelector((state) => state.bookTickets);
-console.log(bookTickets);
+// console.log(bookTickets);
   return (
 
     <div className='displayTotal my-5'>

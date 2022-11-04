@@ -3,18 +3,19 @@ const initialState = {};
 
 const ticketReducer = (state = initialState, action) => {
   switch (action.type) {
-    case ADD_TICKETS:
+    case ADD_TICKETS:{
       const {name, numSeats, bookedSeats} = action.payload;
       if(name === "" || numSeats === 0)
       {
         return state;
       }
       return {...state, name, numSeats, bookedSeats};
-    case TOTAL:{
-      const{soGhe, gia} =  action.payload;
-      
+    }
+    
       
 
+    case TOTAL:{
+      const{soGhe, gia} =  action.payload;
       return [...state,
          state.name,
           state.numSeats,

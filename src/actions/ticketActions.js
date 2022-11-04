@@ -6,6 +6,7 @@ export const addTickets = (name, numSeats, bookedSeats) => {
     payload: { name, numSeats, bookedSeats },
   };
 };
+
 export const total = () => {
   
   return {

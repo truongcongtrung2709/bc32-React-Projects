@@ -6,9 +6,6 @@ import { useSelector } from "react-redux";
 
 const SelectSeats = () => {
   const {cinema} = useSelector((state) => state.cinema);
-
-
-
   
   return (  
     <div className="select-content">
