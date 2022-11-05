@@ -1,51 +1,58 @@
 import React, {useState} from 'react'
 import { useSelector, useDispatch } from "react-redux";
 import {Button} from "react-bootstrap"
-import { total } from '../../actions/ticketActions';
+import { choseSeat, total } from '../../actions/ticketActions';
 import { seatSelect } from '../../actions/cinemaAction';
 
 const Seat = ({cinema}) => {
     const dispatch = useDispatch();
-    const bookTickets = useSelector((state) => state.bookTickets);
+    const { bookedSeats } = useSelector((state) => state.bookTickets);
     const [count, setCount] = useState(1)
     const [clickDisabled, setClickDisabled] = useState(false);
-
+    const [isDisabled, setIsDisabled] = useState(false);
 const handleSelectSeats = (seat) => {
-    // dispatch(seatSelect())
+    dispatch(choseSeat(seat))
 
-    const numSeats = parseInt(bookTickets.numSeats,10)
-    const bookedSeats = bookTickets.bookedSeats
+    // const numSeats = parseInt(bookTickets.numSeats,10)
+    // const bookedSeats = bookTickets.bookedSeats
 
-    const arrSoGhe = bookedSeats.map((item)=> item.soGhe)
+    // const arrSoGhe = bookedSeats.map((item)=> item.soGhe)
    
-    if(arrSoGhe.indexOf(seat.soGhe) === -1){
-      bookedSeats.push(seat);
-      setCount(count+1);
-      if(numSeats === count || numSeats < count)
-      {   
-          setClickDisabled(!clickDisabled)
-      }
-    }   
-    else{
-      alert("Chỗ này mới đặt")
-    }
-    console.log(seat);
-    console.log(bookedSeats);
+    // if(arrSoGhe.indexOf(seat.soGhe) === -1){
+    //   bookedSeats.push(seat);
+    //   setCount(count+1);
+    //   if(numSeats === count || numSeats < count && !arrSoGhe.indexOf(seat.soGhe) === -1)
+    //   {   
+    //      bookedSeats.pop();
+    //      setCount(count-1);
+    //   }
+    // }
+       
+    // else{
+    //   bookedSeats.pop();
+    //   setCount(count-1);
+    // }
+    // // cái đó có bạn a chỉ, mà a chưa hiểu á
+    // console.log(count);
+    // console.log(seat);
+    // console.log(bookedSeats);
 
 }
 const handleTotal = () => {
   // console.log(bookTickets.bookedSeats);
-  const bookedSeats = bookTickets.bookedSeats;
-  if(bookedSeats.length < bookTickets.numSeats){
-    alert("Hãy nhập đủ số ghế")
-    return;
-  }
-  const arrSoGhe = bookedSeats.map((item)=>item.soGhe)
-  const totalPrice = bookedSeats.reduce((total,item)=>total = total + item.gia,0);
-  const soGhe = arrSoGhe.join(',');
-  console.log(soGhe);
-  console.log(totalPrice);
-  console.log(bookedSeats);
+  // const bookedSeats = bookTickets.bookedSeats;
+  // if(bookedSeats.length < bookTickets.numSeats){
+  //   alert("Hãy nhập đủ số ghế")
+  //   return;
+  // }
+  // const arrSoGhe = bookedSeats.map((item)=>item.soGhe)
+  // const totalPrice = bookedSeats.reduce((total,item)=>total = total + item.gia,0);
+  // const soGhe = arrSoGhe.join(',');
+  // console.log(soGhe);
+  // console.log(totalPrice);
+  // console.log(bookedSeats);
+  dispatch(total());
+  setIsDisabled(!isDisabled);
 }
 
 
@@ -63,9 +70,14 @@ const handleTotal = () => {
                   </div>
                 );
               }
+              const getSoGhe = bookedSeats.map(i => i.soGhe);
+              const isExists = getSoGhe.some(i =>i === seat.soGhe);
               return (
-                <div key={seat.soGhe}
-                  className={`ghe ${seatIndex === 4 ? "mr-5" : ""}`}
+                <div key={seatIndex}
+                  className={`
+                  ghe ${seatIndex === 4 ? "mr-5" : ""}
+                  ${isExists ? 'gheDangChon': ''}
+                  `}
                   onClick={clickDisabled ? () =>{} : () => handleSelectSeats(seat)}
                 ></div>
               );
@@ -78,10 +90,10 @@ const handleTotal = () => {
       <div className="text-center">
         <Button className="bg-white text-dark"
         onClick={handleTotal}
+        disabled={isDisabled}
         >Confirm Selection</Button>
       </div>
     </>
   )
 }
-
 export default Seat

@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 const Total = () => {
 
   const bookTickets = useSelector((state) => state.bookTickets);
-// console.log(bookTickets);
   return (
 
     <div className='displayTotal my-5'>
@@ -18,14 +17,10 @@ const Total = () => {
         </tr>
       </thead>
       <tbody>
-        {/* <tr className='bg-dark'>
-          <td>{bookTickets.name}</td>
-          <td>{bookTickets.numSeats}</td>
-          {bookTickets.bookedSeats.map((item)=>(
-            <td>{item.soGhe}</td>
-          ))}
-          <td></td>
-        </tr> */}
+       <tr className='bg-dark'>
+        <td>{bookTickets.name}</td>
+        <td>{bookTickets.numSeats}</td>
+       </tr>
         
       </tbody>
     </Table>
