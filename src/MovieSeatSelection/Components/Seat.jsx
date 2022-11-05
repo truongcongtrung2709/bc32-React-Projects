@@ -72,6 +72,9 @@ const handleTotal = () => {
               }
               const getSoGhe = bookedSeats.map(i => i.soGhe);
               const isExists = getSoGhe.some(i =>i === seat.soGhe);
+              console.log(seat);
+
+              // const cancelSeats = soGhe.
               return (
                 <div key={seatIndex}
                   className={`

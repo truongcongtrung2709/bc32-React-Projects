@@ -3,7 +3,7 @@ import Table from 'react-bootstrap/Table'
 import { useSelector } from "react-redux";
 const Total = () => {
 
-  const bookTickets = useSelector((state) => state.bookTickets);
+  const {bookedSeats} = useSelector((state) => state.bookTickets);
   return (
 
     <div className='displayTotal my-5'>
@@ -17,10 +17,14 @@ const Total = () => {
         </tr>
       </thead>
       <tbody>
+      
        <tr className='bg-dark'>
-        <td>{bookTickets.name}</td>
-        <td>{bookTickets.numSeats}</td>
+
        </tr>
+        
+   
+      
+
         
       </tbody>
     </Table>

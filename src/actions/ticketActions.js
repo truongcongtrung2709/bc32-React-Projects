@@ -1,4 +1,4 @@
-import { ADD_TICKETS, STATUS, TOTAL } from "../constants/ticketConstants";
+import { ADD_TICKETS, CHOSE_SEAT, STATUS, TOTAL } from "../constants/ticketConstants";
 
 export const addTickets = (name, numSeats, bookedSeats) => {
   return {
@@ -16,3 +16,10 @@ export const total = () => {
     type: TOTAL,
   };
 };
+
+export const choseSeat = (item) => {
+  return {
+    type: CHOSE_SEAT,
+    payload: item
+  }
+}
